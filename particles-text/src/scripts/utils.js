@@ -1,9 +1,50 @@
 import * as THREE from 'three';
 const OrbitControls = require('three-orbit-controls')(THREE);
 
+export function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+export function shufflePairsArray(array) {
+  for (let i = array.length / 2 - 1; i > 0; i--) {
+    const pairIdx = i * 2;
+    const j = Math.floor(Math.random() * i) * 2;
+
+    [array[pairIdx], array[j]] = [array[j], array[pairIdx]];
+    [array[pairIdx + 1], array[j + 1]] = [array[j + 1], array[pairIdx + 1]];
+  }
+}
+
+export function generate2DPositions(w, h) {
+  // let positions = new Float32Array(w * h * 2);
+  // let temp = [];
+  // for (let i = 0; i < w; i++) {
+  //   for (let j = 0; j < h; j++) {
+  //     temp.push([i, j]);
+  //   }
+  // }
+  // shuffleArray(temp);
+  // positions = new Float32Array(temp.flatMap((x) => x));
+
+  let positions = new Float32Array(w * h * 2);
+  let index = 0;
+  for (let i = 0; i < w; i++) {
+    for (let j = 0; j < h; j++) {
+      positions[index * 2] = i;
+      positions[index * 2 + 1] = j;
+      index++;
+    }
+  }
+  shufflePairsArray(positions);
+  return positions;
+}
+
 export const initThree = (w, h) => {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color();
+  // scene.background = new THREE.Color('black');
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
@@ -44,11 +85,11 @@ export const generateGeometry = (w, h) => {
   const geometry = new THREE.BufferGeometry();
 
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  return geometry;
+  return { geometry, positions };
 };
 
 const defaultFontSettings = {
-  size: 50,
+  size: 30,
   color: 'black',
   weight: 'bold',
   family: 'sans-serif',
@@ -70,8 +111,8 @@ export const textToTexture = (text, fontSettings = defaultFontSettings, canvasSe
   canvas.width = width;
   canvas.height = height;
 
-  ctx.fillStyle = '#dddddd';
-  ctx.fillRect(0, 0, width, height);
+  // ctx.fillStyle = '#dddddd';
+  // ctx.fillRect(0, 0, width, height);
   ctx.textAlign = 'center';
   ctx.fillStyle = color;
   ctx.textBaseline = 'middle';
