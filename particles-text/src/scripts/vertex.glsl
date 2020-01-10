@@ -14,12 +14,16 @@ uniform sampler2D texture2;
 uniform vec2 dimensions;
 
 varying vec4 vColor;
-
+uniform vec2 mouse;
 
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 }
 
+float circle(vec2 uv, vec2 p, float r, float blur){
+    float dist = length(uv - p);
+    return smoothstep(r, r - blur, dist);
+}
 
 
 void main() {
@@ -43,11 +47,11 @@ void main() {
     vColor = mix(texture2D(texture1, uvFrom), texture2D(texture2, uvTo), progress);
 
     p /= dimensions.x;
-
     // waves
     p.z += 0.02*cos(mix(startP, endP, progress).x*.02 + time*0.05);
     // holes
     p.z += 0.01*cos(mix(endP, startP, progress).x*.02 + time*0.03);
+    p.z -= circle(p.xy*0.9, mouse, 0.1, 0.1)*0.1;
 
     vec4 mvPosition = modelViewMatrix * vec4(p, 1.);
     gl_PointSize = pixelRatio / -mvPosition.z;

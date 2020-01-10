@@ -56,10 +56,11 @@ export const initThree = (w, h) => {
   container.appendChild(renderer.domElement);
 
   const camera = new THREE.PerspectiveCamera(40, w / h, 0.001, 1000);
-  camera.position.set(-0.5, 0, 1);
-  // camera.position.set(0, 0, 1);
+  // camera.position.set(-0.5, 0, 1);
+  camera.position.set(0, 0, 1);
 
   new OrbitControls(camera, renderer.domElement);
+
   const setSizes = () => {
     const ww = w;
     const hh = h;
@@ -67,6 +68,7 @@ export const initThree = (w, h) => {
     camera.aspect = ww / hh;
     camera.updateProjectionMatrix();
   };
+
   setSizes();
   return { scene, renderer, camera };
 };
