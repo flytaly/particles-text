@@ -1,0 +1,28 @@
+#switcher {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  list-style: none;
+}
+
+#switcher > li {
+  width: 15px;
+  height: 15px;
+  background-color: grey;
+  border-radius: 50%;
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+#switcher > li.active {
+  background-color: white;
+}
+
+#switcher > li:hover {
+  background-color: wheat;
+}
