@@ -1,0 +1,33 @@
+.switcher {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+  font-size: 1rem;
+}
+.switcher a {
+  color: rgb(220, 220, 220);
+  text-decoration: none;
+}
+
+.switcher > li {
+  border-radius: 2px;
+  background-color: rgba(100, 100, 100, 0.9);
+  padding: 2px 5px;
+  margin: 0 5px 0 0;
+}
+
+.switcher > li:hover a,
+.switcher > li.active a {
+  color: white;
+  text-decoration: underline;
+}
+
+.switcher > li:hover {
+  background-color: rgba(60, 60, 60, 1);
+  text-decoration: underline;
+}
