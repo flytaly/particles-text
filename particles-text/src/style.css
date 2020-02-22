@@ -3,7 +3,7 @@ body {
   background-color: #f9f9f9;
   height: 100vh;
 }
-input {
+input.textInput {
   width: 100px;
   height: 20px;
   margin-right: 10px;

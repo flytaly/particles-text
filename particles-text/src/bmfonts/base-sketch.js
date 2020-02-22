@@ -2,7 +2,7 @@ import * as THREE from 'three';
 const OrbitControls = require('three-orbit-controls')(THREE);
 
 export default class BaseSketch {
-  constructor({ width = window.innerWidth, height = window.innerWidth, selector, withOrbitControls = true }) {
+  constructor({ width = window.innerWidth, height = window.innerHeight, selector, withOrbitControls = true }) {
     this.scene = new THREE.Scene();
 
     this.renderer = new THREE.WebGLRenderer({
@@ -18,8 +18,8 @@ export default class BaseSketch {
     this.container = document.getElementById(selector);
     this.container.appendChild(this.renderer.domElement);
 
-    this.camera = new THREE.PerspectiveCamera(40, this.width / this.height, 0.001, 1000);
-    this.camera.position.set(0, 0, 1);
+    this.camera = new THREE.PerspectiveCamera(70, this.width / this.height, 0.001, 1000);
+    this.camera.position.set(0, 0, 150);
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
 

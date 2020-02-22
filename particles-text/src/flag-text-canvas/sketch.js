@@ -1,14 +1,14 @@
 import * as THREE from 'three';
 import vertexShader from './vertex.glsl';
 import fragmentShader from './fragment.glsl';
-import BaseSketch from '../lib/base-sketch';
+import BaseSketch from './base-sketch';
 import gsap from 'gsap';
 import { generateGeometry, generate2DPositions } from './utils';
 import TextTexture from './canvas-render-text';
 
 export default class Sketch extends BaseSketch {
   constructor(selector) {
-    super({ selector, width: 512, height: 256 }, true);
+    super({ selector, width: 512, height: 256 });
 
     this.text1 = 'THREE.js';
     this.text2 = 'Node';

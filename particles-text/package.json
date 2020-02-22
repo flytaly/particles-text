@@ -23,10 +23,14 @@
     "@babel/preset-env": "^7.7.7",
     "@types/jest": "^24.0.25",
     "babel-jest": "^24.9.0",
+    "dat.gui": "^0.7.6",
     "gsap": "^3.0.4",
     "jest": "^24.9.0",
+    "load-bmfont": "^1.4.0",
+    "oimo": "^1.0.9",
     "rimraf": "^3.0.2",
-    "three": "^0.112.1",
+    "three": "^0.109.0",
+    "three-bmfont-text": "^2.3.0",
     "three-orbit-controls": "^82.1.0"
   }
 }
