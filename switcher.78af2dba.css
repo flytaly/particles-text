@@ -1,0 +1,2 @@
+.switcher{display:flex;position:fixed;left:0;bottom:0;z-index:1000;list-style:none;margin:10px;padding:0;font-size:1rem}.switcher a{color:#dcdcdc;text-decoration:none}.switcher>li{border-radius:2px;background-color:hsla(0,0%,39.2%,.9);padding:2px 5px;margin:0 5px 0 0}.switcher>li.active a,.switcher>li:hover a{color:#fff;text-decoration:underline}.switcher>li:hover{background-color:#3c3c3c;text-decoration:underline}
+/*# sourceMappingURL=/particles-text/switcher.78af2dba.css.map */
